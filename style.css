@@ -1,51 +1,139 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
-  }
-  
-  header {
-    background: #1e3a8a;
-    color: white;
-    padding: 1rem;
-  }
-  
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+  --primary: #1e3a8a;
+  --secondary: #2563eb;
+  --bg: #f8fafc;
+  --text: #111827;
+  --radius: 0.5rem;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+body {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main";
+  grid-template-rows: auto 1fr;
+}
+
+header {
+  grid-area: header;
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  grid-area: main;
+  padding: 1rem;
+  display: grid;
+  place-items: center;
+}
+
+.busca {
+  width: 100%;
+  max-width: 32rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.08);
+}
+
+.busca h2 {
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+input,
+button {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: var(--radius);
+}
+
+input {
+  border: 1px solid #d1d5db;
+}
+
+button {
+  border: none;
+  background: var(--secondary);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+@media (min-width: 30rem) {
   nav ul {
-    display: flex;
-    gap: 1rem;
-    list-style: none;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
-  
+}
+
+@media (min-width: 48rem) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav ul {
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 64rem) {
+  body {
+    grid-template-areas:
+      "header"
+      "main";
+  }
+
+  main {
+    padding: 2rem;
+  }
+
   .busca {
-    padding: 1rem;
+    max-width: 36rem;
   }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  button {
-    margin-top: 1rem;
-    padding: 0.8rem;
-    background: #2563eb;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  @media (min-width: 768px) {
-    form {
-      max-width: 400px;
-    }
-  
-    nav ul {
-      justify-content: flex-end;
-    }
-  }
+}
