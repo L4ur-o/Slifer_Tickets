@@ -1,0 +1,8 @@
+main {
+  min-height: calc(100vh - 80px);
+
+  display: grid;
+  place-items: center;
+
+  padding: var(--spacing-xl);
+}

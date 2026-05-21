@@ -2,42 +2,64 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>SliferTickets</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
 <body>
+
   <header>
-    <h1>ST - Tickets</h1>
+    <h1>ST Tickets</h1>
 
     <nav aria-label="Menu principal">
       <ul>
         <li><a href="#">Início</a></li>
         <li><a href="#">Promoções</a></li>
-        <li><a href="#">Minhas Viagens</a></li>
+        <li><a href="#">Viagens</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="busca">
+
+    <section class="pesquisa">
+
       <h2>Encontre sua passagem</h2>
 
-      <form>
+      <form id="ticket-form">
+
         <label for="origem">Origem</label>
-        <input type="text" id="origem" required>
+        <input type="text" id="origem" placeholder="Digite a origem" required />
 
         <label for="destino">Destino</label>
-        <input type="text" id="destino" required>
+        <input type="text" id="destino" placeholder="Digite o destino" required />
 
         <label for="data">Data</label>
-        <input type="date" id="data" required>
+        <input type="date" id="data" required />
 
-        <button type="submit">Buscar</button>
+        <button type="submit"> Buscar passagens </button>
+
       </form>
+
     </section>
+
   </main>
+
+  <script type="module" src="./assets/js/main.js"></script>
+
 </body>
+
 </html>

@@ -1,0 +1,17 @@
+body {
+  min-height: 100vh;
+  background: var(--color-background);
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}

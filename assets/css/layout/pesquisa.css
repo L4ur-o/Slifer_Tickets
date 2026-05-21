@@ -1,0 +1,8 @@
+.pesquisa {
+    width: 100%;
+    max-width: 500px;
+    background: var(--color-surface);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}

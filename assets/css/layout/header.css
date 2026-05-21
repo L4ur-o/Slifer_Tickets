@@ -1,0 +1,31 @@
+header {
+  background: var(--color-primary);
+  color: white;
+
+  padding: var(--spacing-md);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+header h1 {
+  font-size: var(--fs-lg);
+}
+
+nav ul {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+nav a {
+  color: white;
+  transition: var(--transition-default);
+}
+
+nav a:hover {
+  opacity: 0.8;
+}
