@@ -1,65 +1,257 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SliferTickets — Encontre e emita sua passagem para qualquer destino no Brasil.">
+  <meta name="theme-color" content="#1e3a8a">
+  <title>SliferTickets — Sua passagem em segundos</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
-  <title>SliferTickets</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
-    rel="stylesheet" />
-
-  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
 
-  <header>
-    <h1>ST Tickets</h1>
+  <!-- Skip link para teclado/leitores de tela -->
+  <a class="skip-link" href="#ticket-form">Pular para o formulário</a>
 
-    <nav aria-label="Menu principal">
-      <ul>
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Promoções</a></li>
-        <li><a href="#">Viagens</a></li>
-      </ul>
-    </nav>
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a href="#" class="header-logo" aria-label="SliferTickets — página inicial">
+        <div class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <div class="logo-wordmark">
+          <span class="brand">SliferTickets</span>
+          <span class="tagline" aria-hidden="true">Sua passagem em segundos</span>
+        </div>
+      </a>
+
+      <nav class="header-nav" aria-label="Navegação principal">
+        <ul role="list">
+          <li><a href="#" class="active" aria-current="page">Início</a></li>
+          <li><a href="#promos">Promoções</a></li>
+          <li><a href="#">Viagens</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-btn" id="themeBtn" aria-label="Alternar para tema escuro">
+          <span class="icon-sun" aria-hidden="true">☀️</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+
+    </div>
   </header>
 
-  <main>
+  <main class="site-main" id="main-content">
+    <div class="page-layout">
 
-    <section class="pesquisa">
+      <!-- Coluna esquerda: hero + formulário -->
+      <div class="page-left">
+        <div class="page-hero">
+          <span class="eyebrow" aria-hidden="true">✈ Passagens Nacionais</span>
+          <h2>Encontre sua passagem</h2>
+          <p>Selecione origem, destino e data — emitimos o ticket na hora.</p>
+        </div>
 
-      <h2>Encontre sua passagem</h2>
+        <div class="search-card">
+          <form class="ticket-form" id="ticket-form" novalidate aria-label="Formulário de emissão de passagem">
 
-      <form id="ticket-form">
+            <div class="form-row-top">
+              <fieldset>
+                <legend>Tipo de viagem</legend>
+                <div class="tipo-radios">
+                  <div class="radio-card">
+                    <input type="radio" name="tipo" id="tipo-ida" value="ida" checked>
+                    <label for="tipo-ida">
+                      <span class="radio-icon" aria-hidden="true">→</span>
+                      Somente ida
+                    </label>
+                  </div>
+                  <div class="radio-card">
+                    <input type="radio" name="tipo" id="tipo-volta" value="ida-volta">
+                    <label for="tipo-volta">
+                      <span class="radio-icon" aria-hidden="true">⇄</span>
+                      Ida e volta
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
 
-        <label for="origem">Origem</label>
-        <input type="text" id="origem" placeholder="Digite a origem" required />
+              <div class="field-group passengers-inline">
+                <label id="label-passageiros">
+                  <span class="field-icon" aria-hidden="true">👥</span>
+                  Passageiros
+                </label>
+                <div class="passengers-control" role="group" aria-labelledby="label-passageiros">
+                  <button type="button" class="qty-btn" id="qty-minus" aria-label="Remover passageiro" aria-disabled="true">−</button>
+                  <span class="qty-display" id="qty-display" aria-live="polite" aria-atomic="true" aria-label="1 passageiro">1</span>
+                  <span class="qty-label" aria-hidden="true">pessoa(s)</span>
+                  <button type="button" class="qty-btn" id="qty-plus" aria-label="Adicionar passageiro">+</button>
+                </div>
+              </div>
+            </div>
 
-        <label for="destino">Destino</label>
-        <input type="text" id="destino" placeholder="Digite o destino" required />
+            <div class="fields-section" aria-label="Origem"><div class="fields-section-label"><span class="section-badge">📍 Origem</span></div>
+              <div class="field-group">
+                <label for="uf-origem">
+                  <span class="field-icon" aria-hidden="true">📍</span>
+                  Estado de origem
+                </label>
+                <div class="select-wrapper">
+                  <select id="uf-origem" required aria-required="true" autocomplete="address-level1">
+                    <option value="">Selecione o estado</option>
+                  </select>
+                </div>
+              </div>
 
-        <label for="data">Data</label>
-        <input type="date" id="data" required />
+              <div class="field-group">
+                <label for="cidade-origem">
+                  <span class="field-icon" aria-hidden="true">🏙</span>
+                  Cidade de origem
+                </label>
+                <div class="select-wrapper">
+                  <select id="cidade-origem" disabled required aria-required="true" aria-disabled="true" autocomplete="address-level2">
+                    <option value="">Selecione primeiro o estado</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-        <button type="submit"> Buscar passagens </button>
+            <div class="fields-section" aria-label="Destino"><div class="fields-section-label"><span class="section-badge">🗺 Destino</span></div>
+              <div class="field-group">
+                <label for="uf-destino">
+                  <span class="field-icon" aria-hidden="true">🗺</span>
+                  Estado de destino
+                </label>
+                <div class="select-wrapper">
+                  <select id="uf-destino" required aria-required="true">
+                    <option value="">Selecione o estado</option>
+                  </select>
+                </div>
+              </div>
 
-      </form>
+              <div class="field-group">
+                <label for="cidade-destino">
+                  <span class="field-icon" aria-hidden="true">🏁</span>
+                  Cidade de destino
+                </label>
+                <div class="select-wrapper">
+                  <select id="cidade-destino" disabled required aria-required="true" aria-disabled="true">
+                    <option value="">Selecione primeiro o estado</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-    </section>
+            <div class="field-row" id="dates-row">
+              <div class="field-group">
+                <label for="data">
+                  <span class="field-icon" aria-hidden="true">📅</span>
+                  Data de partida
+                </label>
+                <div class="input-wrapper">
+                  <input type="date" id="data" required aria-required="true" autocomplete="off">
+                </div>
+              </div>
 
+              <div class="field-group date-retorno-group" id="data-retorno-group" style="display:none">
+                <label for="data-retorno">
+                  <span class="field-icon" aria-hidden="true">📅</span>
+                  Data de retorno
+                </label>
+                <div class="input-wrapper">
+                  <input type="date" id="data-retorno" autocomplete="off">
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Dados dos passageiros -->
+            <div class="section-divider" role="separator" aria-label="Dados dos passageiros">
+              <span aria-hidden="true">Dados dos passageiros</span>
+            </div>
+            <div id="passengers-list" aria-label="Lista de passageiros" aria-live="polite"></div>
+
+            <!-- Preço + cupom -->
+            <div class="section-divider" id="promos" role="separator" aria-label="Resumo e cupom">
+              <span aria-hidden="true">Resumo e cupom</span>
+            </div>
+
+            <div class="price-card" aria-label="Resumo de preço">
+              <div class="price-rows" role="list">
+                <div class="ticket-price-row subtotal" role="listitem">
+                  <span id="price-original-label">1× R$ 189,90</span>
+                  <span id="price-original" aria-label="Subtotal">R$ 189,90</span>
+                </div>
+                <div class="ticket-price-row discount" id="price-discount-row" role="listitem" style="display:none" aria-live="polite">
+                  <span>Desconto aplicado</span>
+                  <span id="price-discount"></span>
+                </div>
+                <div class="ticket-price-row total" role="listitem">
+                  <span>Total</span>
+                  <span id="price-total" aria-live="polite" aria-atomic="true">R$ 189,90</span>
+                </div>
+              </div>
+
+              <div class="coupon-area">
+                <label class="coupon-label" for="coupon-input">
+                  <span class="field-icon" aria-hidden="true">🏷️</span>
+                  Cupom de desconto
+                </label>
+                <div class="coupon-row">
+                  <div class="input-wrapper" style="flex:1">
+                    <input type="text" id="coupon-input" placeholder="Digite o cupom" autocomplete="off" aria-describedby="coupon-msg" spellcheck="false">
+                  </div>
+                  <button type="button" class="btn btn-ghost coupon-btn" id="coupon-apply" aria-label="Aplicar cupom de desconto">Aplicar</button>
+                </div>
+                <p class="coupon-msg" id="coupon-msg" role="status" aria-live="polite" aria-atomic="true"></p>
+
+                <div class="coupon-hints">
+                  <span class="coupon-hint-label" id="coupon-chips-label">Cupons disponíveis — clique para aplicar:</span>
+                  <div class="coupon-chips" role="list" aria-labelledby="coupon-chips-label">
+                    <button type="button" class="coupon-chip" role="listitem" data-code="darkmagician" aria-label="Aplicar cupom darkmagician — 10% de desconto">darkmagician <em aria-hidden="true">10%</em></button>
+                    <button type="button" class="coupon-chip" role="listitem" data-code="redeyes" aria-label="Aplicar cupom redeyes — 20% de desconto">redeyes <em aria-hidden="true">20%</em></button>
+                    <button type="button" class="coupon-chip" role="listitem" data-code="yubel" aria-label="Aplicar cupom yubel — 50% de desconto">yubel <em aria-hidden="true">50%</em></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Emitir passagem
+              <span class="btn-icon" aria-hidden="true">→</span>
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- Coluna direita: resultado -->
+      <div class="page-right">
+        <div class="ticket-result" id="ticket-result" aria-live="polite" role="region" aria-label="Passagem emitida">
+          <div class="page-right-placeholder" aria-hidden="true">
+            <span class="placeholder-icon">🎫</span>
+            <p class="placeholder-text">Sua passagem aparecerá aqui após o preenchimento do formulário</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </main>
 
   <script type="module" src="./assets/js/main.js"></script>
 
 </body>
-
 </html>

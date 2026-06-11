@@ -1,8 +1,122 @@
-main {
-  min-height: calc(100vh - 80px);
+.site-main {
+  min-height: calc(100vh - var(--nav-h));
+  padding: var(--space-10) var(--container-px);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
 
+.page-layout {
   display: grid;
-  place-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-10);
+  align-items: start;
+}
 
-  padding: var(--spacing-xl);
+.page-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.page-right {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--space-6));
+}
+
+.page-hero {
+  text-align: left;
+}
+
+.page-hero .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-4);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-4);
+}
+
+.page-hero h2 {
+  font-size: clamp(var(--text-2xl), 3.5vw, var(--text-3xl));
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.page-hero p {
+  font-size: var(--text-base);
+  color: var(--color-text-2);
+  max-width: 380px;
+  line-height: 1.65;
+}
+
+/* Right column placeholder when no ticket yet */
+.page-right-placeholder {
+  background: var(--color-surface);
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-10) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  text-align: center;
+  min-height: 320px;
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.25;
+}
+
+.placeholder-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-3);
+  font-weight: var(--weight-medium);
+  max-width: 200px;
+  line-height: 1.6;
+}
+
+/* ticket-result na coluna direita não precisa margin-top */
+.page-right .ticket-result {
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .page-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .page-right {
+    position: static;
+    order: -1;
+  }
+
+  .page-hero {
+    text-align: center;
+  }
+
+  .page-hero p {
+    margin: 0 auto;
+  }
+
+  .page-right-placeholder {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-main {
+    padding: var(--space-6) var(--container-px);
+  }
 }

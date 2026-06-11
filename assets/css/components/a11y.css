@@ -1,0 +1,114 @@
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: 9999;
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-primary);
+  color: white;
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  transition: top 0.15s;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+/* Fieldset limpo mas com legend visível */
+.ticket-form fieldset {
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  background: var(--color-surface-2);
+}
+
+.ticket-form fieldset legend {
+  padding: 0 var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-2);
+}
+
+/* Agrupa campos de origem/destino */
+.fields-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+}
+
+/* Focus rings mais robustos para todos inputs */
+.select-wrapper select:focus-visible,
+.input-wrapper input:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-glow);
+}
+
+/* Radio cards: focus-within para teclado */
+.radio-card input[type="radio"]:focus-visible + label {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-color: var(--color-primary);
+}
+
+/* Botões qty: focus-visible */
+.qty-btn:focus-visible,
+.coupon-btn:focus-visible,
+.coupon-chip:focus-visible,
+.theme-btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Melhor contraste nas labels */
+.field-group label {
+  color: var(--color-text);
+}
+
+/* Submit button: foco visível */
+.btn-primary:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px var(--color-primary-glow);
+}
+
+/* Indicador de campo obrigatório */
+[aria-required="true"] ~ .required-hint,
+label:has(+ .select-wrapper select[aria-required="true"])::after,
+label:has(+ .input-wrapper input[aria-required="true"])::after {
+  content: ' *';
+  color: var(--danger);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  margin-left: 2px;
+}
+
+/* Disabled states mais acessíveis */
+.select-wrapper select:disabled,
+.input-wrapper input:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: var(--color-surface);
+}
+
+/* Reduced motion global */
+@media (prefers-reduced-motion: reduce) {
+  .passenger-card,
+  .ticket-result,
+  .date-retorno-group,
+  .btn-primary,
+  .qty-btn {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,317 @@
+.ticket-result {
+  display: none;
+  margin-top: var(--space-6);
+  animation: slideUp 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.ticket-result.visible {
+  display: block;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ticket {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.ticket-header {
+  background: linear-gradient(135deg, var(--brand-800), var(--brand-700));
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ticket-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ticket-brand .t-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: rgba(255,255,255,0.15);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+}
+
+.ticket-brand .t-name {
+  font-family: var(--font-title);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-sm);
+  color: white;
+}
+
+.ticket-brand .t-sub {
+  font-size: var(--text-xs);
+  color: var(--brand-200);
+}
+
+.ticket-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: #6ee7b7;
+}
+
+.ticket-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.ticket-body {
+  padding: var(--space-6);
+}
+
+.ticket-route {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.route-city {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.route-city .city-code {
+  font-family: var(--font-title);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-2xl);
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.route-city .city-name {
+  font-size: var(--text-xs);
+  color: var(--color-text-2);
+  font-weight: var(--weight-medium);
+}
+
+.route-city.dest {
+  text-align: right;
+}
+
+.route-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+.route-arrow .arrow-line {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-primary);
+  font-size: 1.1rem;
+}
+
+.route-arrow .arrow-line::before,
+.route-arrow .arrow-line::after {
+  content: '';
+  display: block;
+  height: 1.5px;
+  width: 28px;
+  background: var(--color-border-2);
+}
+
+.route-arrow .trip-type {
+  font-size: var(--text-xs);
+  color: var(--color-text-3);
+  font-weight: var(--weight-medium);
+}
+
+.ticket-divider {
+  position: relative;
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--space-5) 0;
+}
+
+.ticket-divider::before,
+.ticket-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+
+.ticket-divider::before { left: -10px; }
+.ticket-divider::after  { right: -10px; }
+
+.ticket-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-item .meta-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-3);
+  font-weight: var(--weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.meta-item .meta-value {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+.ticket-footer {
+  border-top: 1px dashed var(--color-border);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-surface-2);
+}
+
+.ticket-id {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ticket-id .id-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ticket-id .id-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+}
+
+.ticket-barcode {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 32px;
+}
+
+.ticket-barcode span {
+  display: block;
+  width: 3px;
+  background: var(--color-border-2);
+  border-radius: 1px;
+  transition: background var(--ease-base);
+}
+
+@media (max-width: 480px) {
+  .ticket-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .route-city .city-code {
+    font-size: var(--text-xl);
+  }
+}
+
+.ticket-pax-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ticket-pax-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0 var(--space-1);
+}
+
+.ticket-pax-item {
+  display: grid;
+  grid-template-columns: 1.4rem 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-1);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  font-size: var(--text-sm);
+}
+
+.pax-num {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.pax-nome {
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+.pax-cpf {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-2);
+}
+
+.ticket-price-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-1);
+}
